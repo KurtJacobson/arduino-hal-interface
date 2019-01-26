@@ -43,7 +43,7 @@ void loop() {
     }
     uint16_t v = analogRead(adc) | (adc << 11);
     if(digitalRead(pinmap[adc])) v |= (1<<10);
-    Serial.print((v >> 7) | 0x80, BYTE);
-    Serial.print(v & 0x7f, BYTE);
+    Serial.write((v >> 7) | 0x80);
+    Serial.write(v & 0x7f);
     adc = (adc + 1) % 6;
 }
