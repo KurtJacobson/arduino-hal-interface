@@ -1,0 +1,32 @@
+loadusr -W arduino /dev/ttyUSB0 3
+loadusr -Wn arduino-vcp pyvcp arduino-vcp.xml
+
+show pin arduino-vcp
+
+net ain0 arduino.analog-in-00 => arduino-vcp.analog-in-00 arduino-vcp.analog-in-00b
+net ain1 arduino.analog-in-01 => arduino-vcp.analog-in-01 arduino-vcp.analog-in-01b
+net ain2 arduino.analog-in-02 => arduino-vcp.analog-in-02 arduino-vcp.analog-in-02b
+net ain3 arduino.analog-in-03 => arduino-vcp.analog-in-03 arduino-vcp.analog-in-03b
+net ain4 arduino.analog-in-04 => arduino-vcp.analog-in-04 arduino-vcp.analog-in-04b
+net ain5 arduino.analog-in-05 => arduino-vcp.analog-in-05 arduino-vcp.analog-in-05b
+
+net din0 arduino.digital-in-08 => arduino-vcp.digital-in-08
+net din1 arduino.digital-in-12 => arduino-vcp.digital-in-12
+net din2 arduino.digital-in-13 => arduino-vcp.digital-in-13
+
+net aout0 arduino.analog-out-03 => arduino-vcp.analog-out-03-f
+net aout1 arduino.analog-out-05 => arduino-vcp.analog-out-05-f
+net aout2 arduino.analog-out-06 => arduino-vcp.analog-out-06-f
+net aout3 arduino.analog-out-09 => arduino-vcp.analog-out-09-f
+net aout4 arduino.analog-out-10 => arduino-vcp.analog-out-10-f
+net aout5 arduino.analog-out-11 => arduino-vcp.analog-out-11-f
+
+net dout0 arduino.digital-out-02 <= arduino-vcp.digital-out-02
+net dout1 arduino.digital-out-04 <= arduino-vcp.digital-out-04
+net dout2 arduino.digital-out-07 <= arduino-vcp.digital-out-07
+
+setp arduino.digital-in-08-pullup 1
+setp arduino.digital-in-12-pullup 1
+setp arduino.digital-in-13-pullup 1
+
+waitusr arduino-vcp
